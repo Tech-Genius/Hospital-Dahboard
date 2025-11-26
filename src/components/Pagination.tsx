@@ -12,11 +12,14 @@ const Pagination: React.FC = () => {
     }
   };
 
+  const pageOptions = {
+    number: ['20/page', '30/page', '40/page', '50/page'],
+  };
   const PageButton: React.FC<{ page: number }> = ({ page }) => {
     const isCurrent = page === currentPage;
     const buttonClass = `w-10 h-8 flex items-center justify-center rounded transition duration-200 text-sm ${isCurrent
-        ? 'bg-primary-accent text-white border border-2 cursor-default'
-        : 'hover:bg-surface-medium text-text-muted cursor-pointer'
+      ? 'bg-primary-accent text-white border border-2 cursor-default'
+      : 'hover:bg-surface-medium text-text-muted cursor-pointer'
       } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`;
 
     return (
@@ -50,43 +53,53 @@ const Pagination: React.FC = () => {
 
 
   return (
-    <div className="flex space-y-2 justify-between flex-wrap max-w-fit items-center bg-surface-dark p-3 rounded-lg mt-4 shadow-xl">
+    <div className='flex justify-end'>
+      <div className="flex space-y-2 justify-between gap-8 flex-wrap max-w-fit items-center bg-surface-dark p-3 rounded-lg mt-4 shadow-xl">
 
+        <div className="flex flex-wrap space-y-2 md:space-y-0 justify-center items-center space-x-1">
+          {/* Prev Button */}
+          <button
+            className={`w-8 h-8 flex font-bold mr-4 text-2xl items-center justify-center rounded hover:bg-surface-medium text-text-muted transition duration-200 ${currentPage === 1 || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1 || isLoading}
+          >
+            &lt;
+          </button>
 
-      <div className="flex  items-center space-x-2 text-sm text-text-muted">
-        <span>{perPage}/page</span>
-      </div>
+          {/* Page Numbers */}
+          {getVisiblePages().map((page, index) => (
+            typeof page === 'number' ? (
+              <PageButton key={page} page={page} />
+            ) : (
+              <span key={index} className="w-8 h-8 flex items-center justify-center text-text-muted">...</span>
+            )
+          ))}
 
-      <div className="flex flex-wrap space-y-2 justify-center items-center space-x-1">
-        {/* Prev Button */}
-        <button
-          className={`w-8 h-8 flex font-bold mr-4 text-2xl items-center justify-center rounded hover:bg-surface-medium text-text-muted transition duration-200 ${currentPage === 1 || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1 || isLoading}
-        >
-          &lt;
-        </button>
+          {/* Next Button */}
+          <button
+            className={`w-8 h-8 flex font-bold ml-4 text-2xl items-center justify-center rounded hover:bg-surface-medium text-text-muted transition duration-200 ${currentPage === totalPages || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages || isLoading}
+          >
+            &gt;
+          </button>
+        </div>
 
-        {/* Page Numbers */}
-        {getVisiblePages().map((page, index) => (
-          typeof page === 'number' ? (
-            <PageButton key={page} page={page} />
-          ) : (
-            <span key={index} className="w-8 h-8 flex items-center justify-center text-text-muted">...</span>
-          )
-        ))}
+        <div className="text-sm text-text-muted">
+        </div>
 
-        {/* Next Button */}
-        <button
-          className={`w-8 h-8 flex font-bold ml-4 text-2xl items-center justify-center rounded hover:bg-surface-medium text-text-muted transition duration-200 ${currentPage === totalPages || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages || isLoading}
-        >
-          &gt;
-        </button>
-      </div>
+        <div className="flex  items-center space-x-2 text-sm text-text-muted">
+          <select
 
-      <div className="text-sm text-text-muted">
+            className="w-full py-3 px-4 rounded-lg bg-[#1F1F1F]   focus:outline-none focus:border-primary-accent text-sm placeholder-text-[#656565]"
+          >
+            <option value="">10/page</option>
+            {pageOptions.number.map(number => (
+              <option key={number} value={number}>{number}</option>
+            ))}
+          </select>
+        </div>
+
       </div>
     </div>
   );
