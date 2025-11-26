@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <Sidebar /> 
       
       {/* 2. Main Content Area */}
-      <main className="ml-0 md:ml-[300px] bg-[#111111] py-12">
+      <main className="ml-0 md:ml-[260px] bg-[#111111] py-12">
         
         {/* Header  */}
         <HospitalHeader onFilterToggle={() => setIsFilterPanelOpen(true)} />
