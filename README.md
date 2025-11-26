@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# Hospital Dashboard Technical Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements a single-page Hospital Dashboard based on the technical and UI/UX requirements specified.
 
-Currently, two official plugins are available:
+The application leverages **React** and **TypeScript** for front-end development, utilizes **Zustand** for state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Setup Instructions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Follow these steps to set up and run the project locally.
 
-## Expanding the ESLint configuration
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Tech-Genius/Hospital-Dahboard
+    cd hospital-dashboard
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3.  **Run the application in development mode:**
+    ```bash
+    npm run dev
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+4.  The application will be accessible at the address displayed in your console (typically `http://localhost:5173`).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Libraries Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The following core libraries were selected to meet the assessment's requirements for functionality, state management, and code quality.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Library | Purpose | Rationale |
+| :--- | :--- | :--- |
+| **React & TypeScript** | UI Development and Type Safety | Required by the assessment. TypeScript is crucial for ensuring strong typing across all data structures and interfaces. |
+| **Zustand** | Global State Management | Required by the assessment as a lightweight, hook-based alternative to Redux. Used to manage the global application state, including the hospital list, filtering parameters, and UI stats. |
+| **Axios** | API Communication | Utilized for robust and efficient handling of external API calls, providing improved request/response handling and error management compared to the native Fetch API. |
+| **Tailwind CSS** | Styling and Theming | Chosen for rapid development and flexibility. Used to precisely match the specified dark-mode aesthetic, responsiveness, and component structures from the provided UI designs. |
+
+---
+
+### Implementation Highlights
+
+* **Data Requirements:** The application successfully fetches the list of hospitals, filtering specifically for **Nigeria** (`countryId: 166`), and implements pagination showing **10 hospitals per page** to cover the required 30 most recent records.
+
+* **Modularity:** The project uses a clean architecture with separate directories for `api`, `store`, `types`, and components, ensuring high maintainability and separation of concerns.
+
