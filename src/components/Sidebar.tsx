@@ -28,7 +28,6 @@ const Sidebar: React.FC = () => {
         <RxHamburgerMenu size={24} />
       </button>
 
-      {/* Overlay (for mobile) */}
       {open && (
         <div
           onClick={() => setOpen(false)}
