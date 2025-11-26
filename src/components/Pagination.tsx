@@ -36,7 +36,7 @@ const Pagination: React.FC = () => {
 
   const getVisiblePages = () => {
     const pages = [];
-    const maxVisible = 5; // Display max 5 pages centered around the current page
+    const maxVisible = 5; 
     const start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
     const end = Math.min(totalPages, start + maxVisible - 1);
 
