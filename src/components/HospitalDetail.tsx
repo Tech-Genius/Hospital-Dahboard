@@ -70,19 +70,19 @@ const HospitalDetail: React.FC = () => {
 
                 <DetailSection title="About">
                     <div className='border border-[#1F1F1F] p-2'>
-                        <p>Welcome to {hospital?.hospitalName || 'ABC Hospital'}, a premier center dedicated to delivering comprehensive healthcare... [Placeholder text to match UI depth].</p>
+                        <p> Welcome to {hospital?.hospitalName || 'ABC Hospital'}, a premier center dedicated to delivering comprehensive healthcare to our community with compassion, expertise, and innovation. Since our founding, our mission has been to provide high-quality, patient-centered care that addresses both acute and long-term health needs for every individual who walks through our doors. Our hospital blends state-of-the-art facilities with a team of experienced physicians, nurses, and support staff—all committed to your well-being and recovery at every stage of life.</p>
                     </div>
                 </DetailSection>
 
                 <DetailSection title="Research and Innovation">
                     <div className='border border-[#1F1F1F] p-2'>
-                        <p>As a forward-thinking institution, {hospital?.hospitalName || '[Hospital Name]'} invests in research and clinical trials... [Placeholder text to match UI depth].</p>
+                        <p> As a forward-thinking institution, {hospital?.hospitalName || '[Hospital Name]'} invests in research and clinical trials to bring the latest medical breakthroughs to our patients. Our partnerships with research institutions and universities help us stay at the cutting edge of medicine, offering patients access to advanced treatment options and clinical trials where appropriate. By embracing innovation, we continuously seek better ways to diagnose, treat, and prevent illness.</p>
                     </div>
                 </DetailSection>
 
                 <DetailSection title="Patient-Centered Care">
                     <div className='border border-[#1F1F1F] p-2'>
-                        <p>Our hospital is designed for comfort and convenience... [Placeholder text to match UI depth].</p>
+                        <p>Our hospital is designed for comfort and convenience. Private patient rooms, attentive support services, and a healing environment help ensure faster recovery and a better overall experience. From streamlined appointment scheduling to on-site amenities such as a family lounge, cafeteria, and wellness programs, every aspect of our hospital is created with the patient and their family in mind.</p>
                     </div>
                 </DetailSection>
 
