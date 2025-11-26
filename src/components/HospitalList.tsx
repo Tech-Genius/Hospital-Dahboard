@@ -40,9 +40,7 @@ const HospitalList: React.FC = () => {
         totalCount
     } = useHospitalStore();
 
-    // Initial fetch on component mount
     useEffect(() => {
-        // Only fetch if data is empty 
         if (hospitals.length === 0 && totalCount === 0) {
             fetchHospitalsList(1, {
                 sortBy: 'id',
@@ -51,17 +49,14 @@ const HospitalList: React.FC = () => {
         }
     }, [fetchHospitalsList, hospitals.length, totalCount]);
 
-    // Handle loading state
     if (isLoading) {
         return <LoadingSpinner />;
     }
 
-    // Handle error state
     if (error) {
         return <ErrorMessage message={error} />;
     }
 
-    // Handle no data state
     if (hospitals.length === 0) {
         return (
             <div className="p-8 text-center text-text-muted">
@@ -71,7 +66,7 @@ const HospitalList: React.FC = () => {
     }
 
     return (
-        <div className="w-full overflow-x-auto rounded-xl bg-surface-dark shadow-xl">
+        <div className="  overflow-x-auto rounded-xl shadow-xl">
             <table className="min-w-max w-full table-auto divide-y divide-[#2A2A2A]">
                 <thead className="bg-surface-medium border border-t-[#2A2A2A]">
                     <tr>

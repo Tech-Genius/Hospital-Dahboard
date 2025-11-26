@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
       >
         {/* Logo */}
         <div className="my-10 mx-5 flex items-center">
-          <img src={logo} className="h-10" alt="Logo" />
+          <img src={logo} className="h-30" alt="Logo" />
         </div>
 
         {/* Navigation */}
