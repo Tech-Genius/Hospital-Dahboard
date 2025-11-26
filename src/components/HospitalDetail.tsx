@@ -60,7 +60,7 @@ const HospitalDetail: React.FC = () => {
 
                         <DetailRow label="Latitude" value={hospital?.latitude} />
 
-                        <div className='flex w-[70%] justify-between'>
+                        <div className='flex w-[90%] justify-between'>
                             <DetailRow label="Country" value={hospital?.country} />
                             <DetailRow label="State" value={hospital?.state} />
                             <DetailRow label="Address" value={hospital?.address} />
