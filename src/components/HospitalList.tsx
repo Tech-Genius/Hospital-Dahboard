@@ -15,11 +15,11 @@ const HospitalRow: React.FC<{ hospital: Hospital }> = ({ hospital }) => {
             onClick={() => setSelectedHospital(hospital)}
         >
             <td className="px-6 py-4 text-sm text-[#FFFFFF]">{hospital.hospitalName || 'N/A'}</td>
-            <td className="px-6 py-4 text-sm text-[#FFFFFF] hidden sm:table-cell">{hospital.hospitalEmail || 'N/A'}</td>
-            <td className="px-6 py-4 text-sm text-[#FFFFFF] hidden md:table-cell">{hospital.phoneNumber || 'N/A'}</td>
-            <td className="px-6 py-4 text-sm text-[#FFFFFF] hidden lg:table-cell">{hospital.address || 'N/A'}</td>
-            <td className="px-6 py-4 text-sm text-[#FFFFFF] hidden lg:table-cell">{hospital.country || 'N/A'}</td>
-            <td className="px-6 py-4 text-sm text-[#FFFFFF] hidden xl:table-cell">{hospital.state || 'N/A'}</td>
+            <td className="px-6 py-4 text-sm text-[#FFFFFF] sm:table-cell">{hospital.hospitalEmail || 'N/A'}</td>
+            <td className="px-6 py-4 text-sm text-[#FFFFFF] md:table-cell">{hospital.phoneNumber || 'N/A'}</td>
+            <td className="px-6 py-4 text-sm text-[#FFFFFF] lg:table-cell">{hospital.address || 'N/A'}</td>
+            <td className="px-6 py-4 text-sm text-[#FFFFFF] lg:table-cell">{hospital.country || 'N/A'}</td>
+            <td className="px-6 py-4 text-sm text-[#FFFFFF] xl:table-cell">{hospital.state || 'N/A'}</td>
 
 
             <td className="px-6 py-4 text-right">
@@ -71,33 +71,34 @@ const HospitalList: React.FC = () => {
     }
 
     return (
-        <div className="overflow-x-auto rounded-xl bg-surface-dark shadow-xl">
-            <table className="min-w-full divide-y  divide-[#2A2A2A]">
+        <div className="w-full overflow-x-auto rounded-xl bg-surface-dark shadow-xl">
+            <table className="min-w-max w-full table-auto divide-y divide-[#2A2A2A]">
                 <thead className="bg-surface-medium border border-t-[#2A2A2A]">
                     <tr>
                         <th className="px-6 py-5 text-left text-sm font-semibold text-[#656565] tracking-wider">
                             Hospital Name
                         </th>
-                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider hidden sm:table-cell">
+                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider sm:table-cell">
                             Email
                         </th>
-                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider hidden md:table-cell">
+                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider md:table-cell">
                             Phone Number
                         </th>
-                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider hidden lg:table-cell">
+                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider lg:table-cell">
                             Address
                         </th>
-                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider hidden lg:table-cell">
+                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider lg:table-cell">
                             Country
                         </th>
-                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider hidden xl:table-cell">
+                        <th className="px-6 py-3 text-left text-sm font-semibold text-[#656565] tracking-wider xl:table-cell">
                             State
                         </th>
-                        <th className=" py-3  text-sm font-semibold text-[#656565] tracking-wider hidden xl:table-cell">
+                        <th className="px-6 py-3 text-sm font-semibold text-[#656565] tracking-wider">
                             Action
                         </th>
                     </tr>
                 </thead>
+
                 <tbody className="divide-y divide-surface-medium/70">
                     {hospitals.map((hospital) => (
                         <HospitalRow key={hospital.id} hospital={hospital} />
@@ -106,6 +107,7 @@ const HospitalList: React.FC = () => {
             </table>
         </div>
     );
+
 };
 
 export default HospitalList;

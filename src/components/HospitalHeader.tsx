@@ -24,7 +24,7 @@ const HospitalHeader: React.FC<HospitalHeaderProps> = ({ onFilterToggle }) => {
         <div className="space-y-6 mx-8">
             <h2 className="text-4xl font-[600] mb-8 text-[#ffffff]">Hospital</h2>
 
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4">
                 {/* Search Input Area */}
                 <div className="flex-grow relative">
                     <input
