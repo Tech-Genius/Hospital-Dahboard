@@ -4,7 +4,6 @@ import { useHospitalStore } from '../store/useHospitalStore';
 const SearchFilter: React.FC = () => {
   const { setSearchParams } = useHospitalStore();
   const [searchTerm, setSearchTerm] = useState('');
-  // In a real application, you'd fetch available types and states for a dropdown
   const [filterType, setFilterType] = useState('');
   const [filterState, setFilterState] = useState('');
 
@@ -24,7 +23,7 @@ const SearchFilter: React.FC = () => {
     setSearchTerm('');
     setFilterType('');
     setFilterState('');
-    setSearchParams({}); // Reset all filters
+    setSearchParams({}); 
   }
 
   return (
@@ -46,7 +45,6 @@ const SearchFilter: React.FC = () => {
         </button>
       </form>
       
-      {/* Filters (by type and state) */}
       <div className="mt-4 flex gap-4">
         <select 
             value={filterType} 
@@ -55,7 +53,6 @@ const SearchFilter: React.FC = () => {
             className="p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
         >
           <option value="">Filter by Type</option>
-          {/* Static options - ideally these would be fetched */}
           <option value="Hospital">Hospital</option>
           <option value="Clinic">Clinic</option>
           <option value="Health Centre">Health Centre</option>
@@ -68,7 +65,6 @@ const SearchFilter: React.FC = () => {
             className="p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
         >
           <option value="">Filter by State</option>
-          {/* Static options - ideally these would be fetched */}
           <option value="Lagos">Lagos</option>
           <option value="Abuja">Abuja</option>
           <option value="Kano">Kano</option>

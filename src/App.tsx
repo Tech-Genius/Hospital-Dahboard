@@ -20,11 +20,11 @@ const App: React.FC = () => {
       {/* 2. Main Content Area */}
       <main className="ml-0 md:ml-[300px] bg-[#111111] py-12">
         
-        {/* Header (Title, Search, Country Filter/Toggle) */}
+        {/* Header  */}
         <HospitalHeader onFilterToggle={() => setIsFilterPanelOpen(true)} />
         
         <div className="mt-8">
-            {/* Display a global error message if API fails */}
+            {/* i'm displaying a global error message if API fails */}
             {error && <ErrorMessage message={error} />}
 
             {/* Hospital List and Pagination */}
