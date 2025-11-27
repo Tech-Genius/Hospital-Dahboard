@@ -54,7 +54,8 @@ const HospitalList: React.FC = () => {
         return <ErrorMessage message={error} />;
     }
 
-    if (filteredHospitals.length === 0 && !isLoading) {
+    // Check if the current visible list is empty (after search/pagination)
+    if (filteredHospitals.length === 0 && allHospitals.length > 0) {
         return (
             <div className="p-8 text-center text-text-muted">
                 <p className="text-xl">No hospitals found matching criteria.</p>
