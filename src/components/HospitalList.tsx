@@ -33,21 +33,18 @@ const HospitalRow: React.FC<{ hospital: Hospital }> = ({ hospital }) => {
 
 const HospitalList: React.FC = () => {
     const {
-        hospitals,
+        filteredHospitals,
         isLoading,
         error,
-        fetchHospitalsList,
-        totalCount
+        fetchInitialHospitalData,
+        allHospitals
     } = useHospitalStore();
 
     useEffect(() => {
-        if (hospitals.length === 0 && totalCount === 0) {
-            fetchHospitalsList(1, {
-                sortBy: 'id',
-                sortDirection: 'desc'
-            });
+        if (allHospitals.length === 0) {
+            fetchInitialHospitalData();
         }
-    }, [fetchHospitalsList, hospitals.length, totalCount]);
+    }, [fetchInitialHospitalData, allHospitals.length]);
 
     if (isLoading) {
         return <LoadingSpinner />;
@@ -57,7 +54,7 @@ const HospitalList: React.FC = () => {
         return <ErrorMessage message={error} />;
     }
 
-    if (hospitals.length === 0) {
+    if (filteredHospitals.length === 0 && !isLoading) {
         return (
             <div className="p-8 text-center text-text-muted">
                 <p className="text-xl">No hospitals found matching criteria.</p>
@@ -95,7 +92,7 @@ const HospitalList: React.FC = () => {
                 </thead>
 
                 <tbody className="divide-y divide-surface-medium/70">
-                    {hospitals.map((hospital) => (
+                    {filteredHospitals.map((hospital) => (
                         <HospitalRow key={hospital.id} hospital={hospital} />
                     ))}
                 </tbody>
