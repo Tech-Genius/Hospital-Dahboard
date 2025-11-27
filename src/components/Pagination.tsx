@@ -12,7 +12,7 @@ const Pagination: React.FC = () => {
         totalCount 
     } = useHospitalStore();
 
-    if (totalPages <= 1 && totalCount <= (perPage || 10)) return null;
+    if (totalPages <= 1) return null;
 
     const handlePageChange = (page: number) => {
         if (page >= 1 && page <= totalPages && page !== currentPage && !isLoading) {

@@ -27,37 +27,37 @@ interface HospitalState {
 }
 
 const applyFilterAndPagination = (
-    allHospitals: Hospital[], 
-    searchParams: Omit<Partial<HospitalSearchParams>, 'countryId' | 'perPage' | 'page'>,
-    currentPage: number,
-    perPage: number
+    allHospitals: Hospital[], 
+    searchParams: Omit<Partial<HospitalSearchParams>, 'countryId' | 'perPage' | 'page'>,
+    currentPage: number,
+    perPage: number
 ) => {
-    const { search } = searchParams;
-    let currentlyFiltered = allHospitals;
+    const { search } = searchParams;
+    let currentlyFiltered = allHospitals;
 
-    if (search && search.trim() !== '') {
-        const searchTermLower = search.toLowerCase();
-        currentlyFiltered = allHospitals.filter(hospital =>
-            hospital.hospitalName?.toLowerCase().includes(searchTermLower) ||
-            hospital.address?.toLowerCase().includes(searchTermLower) ||
-            hospital.state?.toLowerCase().includes(searchTermLower)
-        );
-    }
-    
-    const totalCount = currentlyFiltered.length;
-    const totalPages = Math.ceil(totalCount / perPage);
+    if (search && search.trim() !== '') {
+        const searchTermLower = search.toLowerCase();
+        currentlyFiltered = allHospitals.filter(hospital =>
+            hospital.hospitalName?.toLowerCase().includes(searchTermLower) ||
+            hospital.address?.toLowerCase().includes(searchTermLower) ||
+            hospital.state?.toLowerCase().includes(searchTermLower)
+        );
+    }
+    
+    const totalCount = currentlyFiltered.length;
+    const totalPages = Math.ceil(totalCount / perPage);
 
-    let page = Math.min(currentPage, totalPages || 1);
-    
-    const startIndex = (page - 1) * perPage;
-    const paginatedHospitals = currentlyFiltered.slice(startIndex, startIndex + perPage);
+    let page = Math.min(currentPage, totalPages || 1);
+    
+    const startIndex = (page - 1) * perPage;
+    const paginatedHospitals = currentlyFiltered.slice(startIndex, startIndex + perPage);
 
-    return {
-        paginatedHospitals,
-        totalCount,
-        totalPages,
-        page
-    };
+    return {
+        paginatedHospitals,
+        totalCount,
+        totalPages,
+        page
+    };
 };
 
 export const useHospitalStore = create<HospitalState>((set, get) => ({
@@ -76,14 +76,14 @@ export const useHospitalStore = create<HospitalState>((set, get) => ({
 
   fetchInitialHospitalData: async () => {
     set({ isLoading: true, error: null });
-
     const allHospitalsParams = {
         countryId: 166,
+        perPage: 30, 
     };
 
     try {
       const response = await fetchHospitals(allHospitalsParams);
-      const data = response.data.data;
+      const data = response.data.data; 
       
       const { paginatedHospitals, totalCount, totalPages } = applyFilterAndPagination(
         data, 
